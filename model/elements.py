@@ -210,11 +210,11 @@ class Type(Element):
 
   @property
   def is_alias(self) -> bool:
-    return self._composite_type is None and self._name is not None and (self._typestr or self._element_type)
+    return self._composite_type is None and self._name is not None and (self._typestr or self._element)
 
   @property
   def is_base(self) -> bool:
-    return self._composite_type is None and self._name is not None and self._typestr is None and self._element_type is None and self._offset is None
+    return self._composite_type is None and self._name is not None and self._typestr is None and self._element is None and self._offset is None
 
   @property
   def composite_type(self) -> CompositeType:
