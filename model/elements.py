@@ -158,6 +158,7 @@ class Type(Element):
     self._array_count = array_count
     self._is_volatile = False
     self._is_constant = False
+    self._typestr = None # might need this at some point
 
   def clone(self):
     cloned_type = Type(name=self._name)
