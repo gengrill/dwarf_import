@@ -701,14 +701,14 @@ class DWARFImporter(object):
             local_var = self.import_local_variable(child, component, function, abstract_map)
             if local_var:
               # print(self._dwarf_db.is_concrete_variable(die), child)
-              self.import_locations(local_var, child, location_map, [LocationType.STATIC_LOCAL, LocationType.STATIC_GLOBAL])
+              self.import_locations(local_var, child, location_map, [LocationType.STATIC_LOCAL, LocationType.STATIC_GLOBAL, LocationType.DYNAMIC])
           # else:
           #     self._logger.warning(f'In {function.name} variable is not concrete\n{child}')
       elif child.tag == 'DW_TAG_formal_parameter':
         if self._include_parameters:
           param = self.import_parameter(child, function, parent_function, abstract_map)
           if param:
-            self.import_locations(param, child, location_map, [LocationType.STATIC_LOCAL])
+            self.import_locations(param, child, location_map, [LocationType.STATIC_LOCAL, LocationType.DYNAMIC])
       elif child.tag == 'DW_TAG_unspecified_parameters':
         p = Parameter(name='...', type=None)
         function.add_parameter(p)
